@@ -9,7 +9,7 @@ export default function Routes() {
   return (
     <NavigationContainer>
         {login ?
-          <TabRouter />
+          <TabRouter  setLogin={setLogin}/>
           :    
         <StackRouteLogin setLogin={setLogin}/>
         } 
