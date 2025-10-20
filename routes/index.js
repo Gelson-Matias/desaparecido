@@ -8,11 +8,11 @@ export default function Routes() {
   const [login,setLogin]=useState(false)
   return (
     <NavigationContainer>
-        {/* {login ? */}
+        {login ?
           <TabRouter />
-          // :    
-        {/* //   <StackRouteLogin setLogin={setLogin}/> */}
-        {/* // } */}
+          :    
+        <StackRouteLogin setLogin={setLogin}/>
+        } 
       <StatusBar
         animated={true}
         backgroundColor="#00c0ef"

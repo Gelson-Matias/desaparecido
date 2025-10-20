@@ -17,10 +17,7 @@ export default function TabRouter() {
   const closeAccount=()=>{
       console.log(123);
       }
-    // const checkSingOutIn=()=>{
-    //   setLogin(false)
-    // }
-    
+  
   return (
     <Tab.Navigator screenOptions={{tabBarStyle:{
       backgroundColor:'#00c0ef',
@@ -130,25 +127,7 @@ export default function TabRouter() {
         }}
        
       />
-      
-      
-      {/* <Tab.Group screenOptions={()=>({
-        tabBarStyle:{
-          display:'none',
-        }
-        
-        })}>
-          <Tab.Screen
-            name="LogOut"
-            component={App}
-            options={{
-              headerShown:false,
-              headerStyle:{
-                display:'none'
-              }
-            }}
-          />
-      </Tab.Group> */}
+     
     </Tab.Navigator>
   )
 }
