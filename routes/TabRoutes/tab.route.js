@@ -105,8 +105,7 @@ export default function TabRouter({ setLogin }) {
       />
 
    
-
-            <Tab.Screen
+      <Tab.Screen
         name="singIn"
         component={() => null} // não mostra tela
         options={{
@@ -123,7 +122,7 @@ export default function TabRouter({ setLogin }) {
           },
         }}
       />
-     
+          
     </Tab.Navigator>
   )
 }
