@@ -1,33 +1,48 @@
 import { View,StyleSheet,Dimensions,ImageBackground, ScrollView, Text} from 'react-native'
-import { DivAntherAcess,ButtonCreate,Body, ViewForm,InputText,DivInput,Aside,DivButton,DivHeader,Label,ButtonFingerprint,ButtonEmail,ButtonNumber,FullNumber } from './style'
+import { Body, ViewForm,ButtonFingerprint,ButtonCreateUser,ButtonNumber,FullNumber } from './style'
 import { Feather,FontAwesome,MaterialIcons,FontAwesome5 } from '@expo/vector-icons';
 import React, { useState } from 'react'
+import Entypo from '@expo/vector-icons/Entypo';
 
 const { width,height } = Dimensions.get('screen');
 const image = require('../../../public/img/top-login.png')
 const image1 = require('../../../public/img/bottom.png')
 const size = width * 1; // 20% da largura da tela
 let qdtTochNumber=parseInt(0);
+let passwordTest=0;
 
-export default function SingIn({setLogin}) {
+export default function SingIn({ setLogin,login }) {
   let fullCredencial=[0,0.1,0.3,0.5,0.6,0.7,0.9,1];
   let [qdtToch,  seQdtToch]=useState(fullCredencial[0]);
+  
   const clainPassword= ()=>{
     qdtTochNumber=parseInt(0)
     seQdtToch(fullCredencial[0])
+    passwordTest=0;
   }
-   const checkLogin=()=>{
+   function checkLogin(number){
+    console.log(number)
       let  index =parseInt(qdtTochNumber=qdtTochNumber+1)
+         console.log(index)
       if (index<=parseInt(7)) {
           seQdtToch(fullCredencial[index])
-          console.log("Depos - "+index);
-          if (index==parseInt(7)) {
-              console.log(188);
-              setLogin(true)
+          passwordTest=parseInt(passwordTest+parseInt(number)) 
+          console.log("Senha - "+passwordTest);
+          if (index==parseInt(7) && passwordTest!=28) {
+              index =parseInt(0)
+              clainPassword()
+              setLogin("ErrorSignIn")
+          }else{
+              if (index==parseInt(7) && passwordTest==28) {
+                  index =parseInt(0)
+                  clainPassword()
+                  setLogin("TabRouter")
+              }
           }
       }
    
   }
+ 
   return (
       <Body>
              <ImageBackground
@@ -44,36 +59,36 @@ export default function SingIn({setLogin}) {
                         <ScrollView style={{}}>
                             <View style={{flex:1}} >
                               <View style={{paddingBottom:0, paddingLeft:0,paddingTop:0, flexDirection:'row',flexWrap:'wrap',}} >
-                                    <ButtonNumber  onPress={checkLogin}>
+                                    <ButtonNumber   onPress={()=>checkLogin(0)}>
                                       <Text style={{color:'white',fontSize:27}}>0</Text>
                                     </ButtonNumber>
 
-                                    <ButtonNumber  onPress={checkLogin}>
+                                    <ButtonNumber  onPress={()=>checkLogin(1)}>
                                      <Text style={{color:'white',fontSize:27}}>1</Text>
                                     </ButtonNumber>
 
-                                       <ButtonNumber  onPress={checkLogin}>
+                                       <ButtonNumber  onPress={()=>checkLogin(2)}>
                                       <Text style={{color:'white',fontSize:27}}>2</Text>
                                     </ButtonNumber>
-                                       <ButtonNumber  onPress={checkLogin}>
+                                       <ButtonNumber  onPress={()=>checkLogin(3)}>
                                       <Text style={{color:'white',fontSize:27}}>3</Text>
                                     </ButtonNumber>
-                                       <ButtonNumber  onPress={checkLogin}>
+                                       <ButtonNumber  onPress={()=>checkLogin(4)}>
                                       <Text style={{color:'white',fontSize:27}}>4</Text>
                                         </ButtonNumber>
-                                        <ButtonNumber  onPress={checkLogin}>
+                                        <ButtonNumber  onPress={()=>checkLogin(5)}>
                                       <Text style={{color:'white',fontSize:27}}>5</Text>
                                         </ButtonNumber>
-                                        <ButtonNumber  onPress={checkLogin}>
+                                        <ButtonNumber  onPress={()=>checkLogin(6)}>
                                       <Text style={{color:'white',fontSize:27}}>6</Text>
                                         </ButtonNumber>
-                                        <ButtonNumber  onPress={checkLogin}>
+                                        <ButtonNumber  onPress={()=>checkLogin(7)}>
                                       <Text style={{color:'white',fontSize:27}}>7</Text>
                                         </ButtonNumber>
-                                        <ButtonNumber  onPress={checkLogin}>
+                                        <ButtonNumber  onPress={()=>checkLogin(8)}>
                                       <Text style={{color:'white',fontSize:27}}>8</Text>
                                         </ButtonNumber>
-                                        <ButtonNumber  onPress={checkLogin}>
+                                        <ButtonNumber  onPress={()=>checkLogin(9)}>
                                       <Text style={{color:'white',fontSize:27}}>9</Text>
                                         </ButtonNumber>
                                         <ButtonNumber style={{paddingRight:20,paddingLeft:20, justifyContent:'center',alignItems:'center'}}  onPress={clainPassword}>
@@ -88,17 +103,13 @@ export default function SingIn({setLogin}) {
                                   </View>
                               
                           </View>
-                           
-                          <DivAntherAcess>
-                             
-                          </DivAntherAcess>
                           <View style={{flex:1,  flexDirection:'row', paddingLeft:8,justifyContent:'space-between'}} >
                               <View style={{flexDirection:'row'}} >
-                                    <ButtonEmail  onPress={checkLogin}>
-                                    <FontAwesome style={{padding:0}} name="google" size={28} color="#dbeafa" />
-                                    </ButtonEmail>
+                                    <ButtonCreateUser onPress={()=> setLogin("CreateUser")}>
+                                    <Entypo name="add-user" size={28} color="#dbeafa" />
+                                    </ButtonCreateUser>
 
-                                    <ButtonFingerprint  onPress={checkLogin}>
+                                    <ButtonFingerprint  >
                                       <MaterialIcons style={{padding:0}} name="fingerprint" size={28} color="#dbeafa" />
                                     </ButtonFingerprint>
                                   </View>
