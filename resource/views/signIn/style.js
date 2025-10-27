@@ -12,9 +12,9 @@ export const Body=styled.View`
 
 export const ViewForm=styled.View`
     flex:8;
-    padding:10px;
-    padding-top:4%;
-    padding-bottom:17%;
+    padding:0px;
+    padding-top:25px;
+    margin-top: 18px;
     /* background-color: white; */
     border-top-left-radius: 20px;
     border-top-right-radius:20px;
@@ -65,7 +65,13 @@ export const ButtonWhatApp=styled.TouchableHighlight`
    border-radius: 5px;
    padding: 3%;
 `;
+export const ButtonHome=styled.TouchableHighlight`
+   background-color: #59d6f5;
+    align-items: center;
+   padding: 15px;
+   border-radius: 20px;
 
+`;
 
 
 

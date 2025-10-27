@@ -1,4 +1,4 @@
-import { View,StyleSheet,Dimensions,ImageBackground, ScrollView, Text} from 'react-native'
+import { View,StyleSheet,Dimensions,ImageBackground, ScrollView, Text,TouchableHighlight} from 'react-native'
 import { Body, ViewForm,ButtonFingerprint,ButtonCreateUser,ButtonNumber,FullNumber } from './style'
 import { Feather,FontAwesome,MaterialIcons,FontAwesome5 } from '@expo/vector-icons';
 import React, { useState } from 'react'
@@ -8,6 +8,10 @@ const { width,height } = Dimensions.get('screen');
 const image = require('../../../public/img/top-login.png')
 const image1 = require('../../../public/img/bottom.png')
 const size = width * 1; // 20% da largura da tela
+
+const size001 = (width *  0.2-15)/2; // 70% da largura da tela
+const size002 = width * 0.2-15; // 20% da largura da tela
+
 let qdtTochNumber=parseInt(0);
 let passwordTest=0;
 
@@ -49,15 +53,29 @@ export default function SingIn({ setLogin,login }) {
                   source={image} // substitua com o seu caminho correto
                   style={styles.topImage}
                   resizeMode="cover"
-                ></ImageBackground>
-                <View style={{flex:1, justifyContent:'flex-end', alignItems:'center',paddingRight:5,paddingBottom:10 }}>
-                   <Text style={{color:'#00c0ef', fontSize:25}}>
-                      ACESSO <FontAwesome5 style={{padding:0}} name="key" size={23} color="#00c0ef" />
-                   </Text>
-                </View>
+                >
+
+                  <View style={{paddingBottom:0,paddingTop:0,justifyContent:'space-between',flex:1,alignItems:'center',flexDirection:'row'}}>
+                          
+                            <View style={{paddingLeft:10}}>
+                              <View style={{paddingRight:10}}>
+                                <TouchableHighlight onPress={()=>setLogin("TabRouter")}  style={styles.ButtonTouchableHighlight} >
+                                <FontAwesome name="home" size={28} color="#fff" />
+                                </TouchableHighlight>
+                              </View>
+                             
+                            </View >
+                            <View style={{paddingRight:5}}>
+                              <Text style={styles.title}>
+                                    ACESSO <FontAwesome5 style={{padding:0}} name="key" size={18} color="#dbeafa" />
+                                  </Text>
+                            </View>
+                            
+                        </View>
+                </ImageBackground>
                   <ViewForm>
                         <ScrollView style={{}}>
-                            <View style={{flex:1}} >
+                            <View style={{flex:1, paddingTop:50, padding:0}} >
                               <View style={{paddingBottom:0, paddingLeft:0,paddingTop:0, flexDirection:'row',flexWrap:'wrap',}} >
                                     <ButtonNumber   onPress={()=>checkLogin(0)}>
                                       <Text style={{color:'white',fontSize:27}}>0</Text>
@@ -100,10 +118,9 @@ export default function SingIn({ setLogin,login }) {
                                          </View>
                                              
                                         </FullNumber>
-                                  </View>
-                              
+                              </View>
                           </View>
-                          <View style={{flex:1,  flexDirection:'row', paddingLeft:8,justifyContent:'space-between'}} >
+                          <View style={{flex:1,  flexDirection:'row', paddingLeft:15,justifyContent:'space-between'}} >
                               <View style={{flexDirection:'row'}} >
                                     <ButtonCreateUser onPress={()=> setLogin("CreateUser")}>
                                     <Entypo name="add-user" size={28} color="#dbeafa" />
@@ -142,5 +159,19 @@ const styles = StyleSheet.create({
     height: width * 0.27, // define a altura proporcional à largura (25% aqui)
     justifyContent: 'center',
     
+  }, title: {
+    color: '#dbeafa',
+    fontSize: 20,
+    fontWeight: '800',
+  },
+    ButtonTouchableHighlight:{
+    width: size002,
+    height: size002,
+    borderRadius: size001,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#00c0ef',
+    elevation:8
+
   }
 })
