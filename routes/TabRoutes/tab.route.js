@@ -28,9 +28,7 @@ export default function TabRouter({ setLogin,login }) {
       borderTopRightRadius:50,
       // paddingLeft:20,
       // paddingRight:20,
-      // width:size,
-      // height:60,
-      // marginLeft:size01,
+     
       
     }}}>
       <Tab.Screen 
