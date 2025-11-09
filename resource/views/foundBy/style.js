@@ -75,7 +75,7 @@ export const DivButton=styled.View`
    padding:5px;
 `;
 export const ButtonCreate=styled.TouchableHighlight`
-   background-color: #dd4b39;
+   background-color: #002e50;
    align-items: center;
    margin-top: 20px;
    margin-bottom: 10px;
